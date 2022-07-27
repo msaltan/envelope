@@ -135,8 +135,8 @@ public class TestSparkMLDeriver {
   private void derive(Deriver deriver, Map<String, Dataset<Row>> dependencies) throws Exception {
     List<Row> derived = deriver.derive(dependencies).collectAsList();
 
-    assertEquals(1.0, derived.get(0).getAs("prediction"));
-    assertEquals(0.0, derived.get(1).getAs("prediction"));
+    assertEquals(1.0, (double)derived.get(0).getAs("prediction"));
+    assertEquals(0.0, (double)derived.get(1).getAs("prediction"));
   }
 
   private void generateAndSaveModel(String savePath) throws IOException {

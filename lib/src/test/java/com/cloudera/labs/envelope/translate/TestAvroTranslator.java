@@ -101,10 +101,10 @@ public class TestAvroTranslator {
     assertEquals("hello", validated.getAs("field1"));
     assertEquals(true, validated.getAs("field2"));
     assertEquals("world", new String(validated.<byte[]>getAs("field3")));
-    assertEquals(1.0d, validated.getAs("field4"));
-    assertEquals(1, validated.getAs("field5"));
-    assertEquals(1.0f, validated.getAs("field6"));
-    assertEquals(1L, validated.getAs("field7"));
+    assertEquals(1.0d, (double)validated.getAs("field4"));
+    assertEquals(1, (int)validated.getAs("field5"));
+    assertEquals(1.0f, (float)validated.getAs("field6"));
+    assertEquals(1L, (long)validated.getAs("field7"));
     for (int i = 8; i < 14; i++) {
       assertNull(validated.getAs("field" + i));
     }

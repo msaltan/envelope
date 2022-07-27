@@ -470,7 +470,7 @@ public class KuduOutput implements RandomOutput, BulkOutput, UsesAccumulators, P
 
       KuduWriteOptions kuduWriteOptions = new KuduWriteOptions(
           KuduUtils.doesInsertIgnoreDuplicates(config),
-          false
+          false,false,false,false
       );
 
       switch (mutationType) {

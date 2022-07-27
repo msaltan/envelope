@@ -123,11 +123,11 @@ public class TestBitemporalHistoryPlanner {
 
     assertEquals(PlannerUtils.getMutationType(planned.get(0)), MutationType.INSERT);
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
     assertTrue((Long)planned.get(0).getAs("systemstart") >= preplanSystemTime);
     assertTrue((Long)planned.get(0).getAs("systemstart") < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -146,11 +146,11 @@ public class TestBitemporalHistoryPlanner {
 
     assertEquals(PlannerUtils.getMutationType(planned.get(0)), MutationType.INSERT);
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
     assertTrue((Long)planned.get(0).getAs("systemstart") >= preplanSystemTime);
     assertTrue((Long)planned.get(0).getAs("systemstart") < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -173,19 +173,19 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart1 = planned.get(1).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 199L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 200L);
-    assertEquals(planned.get(1).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -209,18 +209,18 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart1 = planned.get(1).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 199L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
 
     assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 200L);
-    assertEquals(planned.get(1).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -244,26 +244,26 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
   
@@ -303,24 +303,24 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
 
-    assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 253402214400000L);
+    assertEquals( planned.get(2).getAs("value"), "world");
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -372,18 +372,18 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart1 = planned.get(1).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -406,17 +406,17 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart1 = planned.get(1).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
     assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -437,11 +437,11 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart0 = planned.get(0).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "world");
-    assertEquals(planned.get(0).getAs("eventstart"), 50L);
-    assertEquals(planned.get(0).getAs("eventend"), 99L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 50L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 99L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
   }
   
@@ -465,19 +465,19 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart0 = planned.get(0).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "world");
-    assertEquals(planned.get(0).getAs("eventstart"), 50L);
-    assertEquals(planned.get(0).getAs("eventend"), 74L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 50L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 74L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
     
     assertEquals(planned.get(1).getAs("value"), "world!");
-    assertEquals(planned.get(1).getAs("eventstart"), 75L);
-    assertEquals(planned.get(1).getAs("eventend"), 99L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 75L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 99L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
   }
 
@@ -499,11 +499,11 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart0 = planned.get(0).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "world");
-    assertEquals(planned.get(0).getAs("eventstart"), 50L);
-    assertEquals(planned.get(0).getAs("eventend"), 99L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 50L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 99L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -531,26 +531,26 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello?");
-    assertEquals(planned.get(0).getAs("eventstart"), 300L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 5L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 5L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "hello?");
-    assertEquals(planned.get(1).getAs("eventstart"), 300L);
-    assertEquals(planned.get(1).getAs("eventend"), 399L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 399L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 400L);
-    assertEquals(planned.get(2).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 400L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -579,24 +579,24 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello?");
-    assertEquals(planned.get(0).getAs("eventstart"), 300L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 5L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 5L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
     assertEquals(planned.get(1).getAs("value"), "hello?");
-    assertEquals(planned.get(1).getAs("eventstart"), 300L);
-    assertEquals(planned.get(1).getAs("eventend"), 399L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 399L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
 
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 400L);
-    assertEquals(planned.get(2).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 400L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -660,18 +660,18 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart1 = planned.get(1).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello?");
-    assertEquals(planned.get(0).getAs("eventstart"), 300L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 5L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 5L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 300L);
-    assertEquals(planned.get(1).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -698,17 +698,17 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart1 = planned.get(1).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello?");
-    assertEquals(planned.get(0).getAs("eventstart"), 300L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 5L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 5L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
     assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 300L);
-    assertEquals(planned.get(1).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -736,26 +736,26 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 199L);
-    assertEquals(planned.get(0).getAs("systemstart"), 3L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 3L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 149L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 149L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 150L);
-    assertEquals(planned.get(2).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 150L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 199L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
   }
 
@@ -784,24 +784,24 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 199L);
-    assertEquals(planned.get(0).getAs("systemstart"), 3L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 3L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 149L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 149L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
 
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 150L);
-    assertEquals(planned.get(2).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 150L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 199L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -825,11 +825,11 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart0 = planned.get(0).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "world");
-    assertEquals(planned.get(0).getAs("eventstart"), 50L);
-    assertEquals(planned.get(0).getAs("eventend"), 99L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 50L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 99L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
   }
 
@@ -854,11 +854,11 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart0 = planned.get(0).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "world");
-    assertEquals(planned.get(0).getAs("eventstart"), 50L);
-    assertEquals(planned.get(0).getAs("eventend"), 99L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 50L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 99L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -884,46 +884,46 @@ public class TestBitemporalHistoryPlanner {
 
     assertEquals(PlannerUtils.getMutationType(planned.get(0)), MutationType.UPDATE);
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(PlannerUtils.getMutationType(planned.get(1)), MutationType.INSERT);
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(PlannerUtils.getMutationType(planned.get(2)), MutationType.INSERT);
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 299L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 299L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(PlannerUtils.getMutationType(planned.get(3)), MutationType.INSERT);
     assertEquals(planned.get(3).getAs("value"), "world!");
-    assertEquals(planned.get(3).getAs("eventstart"), 300L);
-    assertEquals(planned.get(3).getAs("eventend"), 399L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 399L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(3).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(PlannerUtils.getMutationType(planned.get(4)), MutationType.INSERT);
     assertEquals(planned.get(4).getAs("value"), "world?");
-    assertEquals(planned.get(4).getAs("eventstart"), 400L);
-    assertEquals(planned.get(4).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(4).getAs("eventstart"), 400L);
+    assertEquals((long)planned.get(4).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart4 >= preplanSystemTime);
     assertTrue(systemStart4 < preplanSystemTime + 5000);
-    assertEquals(planned.get(4).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(4).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(4).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -950,42 +950,42 @@ public class TestBitemporalHistoryPlanner {
 
     assertEquals(PlannerUtils.getMutationType(planned.get(0)), MutationType.UPDATE);
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
     assertEquals(PlannerUtils.getMutationType(planned.get(1)), MutationType.INSERT);
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
 
     assertEquals(PlannerUtils.getMutationType(planned.get(2)), MutationType.INSERT);
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 299L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 299L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
 
     assertEquals(PlannerUtils.getMutationType(planned.get(3)), MutationType.INSERT);
     assertEquals(planned.get(3).getAs("value"), "world!");
-    assertEquals(planned.get(3).getAs("eventstart"), 300L);
-    assertEquals(planned.get(3).getAs("eventend"), 399L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 399L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
 
     assertEquals(PlannerUtils.getMutationType(planned.get(4)), MutationType.INSERT);
     assertEquals(planned.get(4).getAs("value"), "world?");
-    assertEquals(planned.get(4).getAs("eventstart"), 400L);
-    assertEquals(planned.get(4).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(4).getAs("eventstart"), 400L);
+    assertEquals((long)planned.get(4).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart4 >= preplanSystemTime);
     assertTrue(systemStart4 < preplanSystemTime + 5000);
-    assertEquals(planned.get(4).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(4).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -1013,34 +1013,34 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart3 = planned.get(3).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 299L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 299L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(3).getAs("value"), "world!");
-    assertEquals(planned.get(3).getAs("eventstart"), 300L);
-    assertEquals(planned.get(3).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(3).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -1069,31 +1069,31 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart3 = planned.get(3).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
 
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 299L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 299L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
 
-    assertEquals(planned.get(3).getAs("value"), "world!");
-    assertEquals(planned.get(3).getAs("eventstart"), 300L);
-    assertEquals(planned.get(3).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("value"), "world!");
+    assertEquals((long)planned.get(3).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -1121,34 +1121,34 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart3 = planned.get(3).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
-    assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals( planned.get(1).getAs("value"), "world");
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value"), "world!");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 299L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 299L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(3).getAs("value"), "world?");
-    assertEquals(planned.get(3).getAs("eventstart"), 300L);
-    assertEquals(planned.get(3).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(3).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -1177,31 +1177,31 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart3 = planned.get(3).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
-    assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals( planned.get(1).getAs("value"), "world");
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
 
     assertEquals(planned.get(2).getAs("value"), "world!");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 299L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 299L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
 
     assertEquals(planned.get(3).getAs("value"), "world?");
-    assertEquals(planned.get(3).getAs("eventstart"), 300L);
-    assertEquals(planned.get(3).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -1277,48 +1277,48 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart5 = planned.get(5).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 199L);
-    assertEquals(planned.get(0).getAs("systemstart"), 3L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 3L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value"), "hello!");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 299L);
-    assertEquals(planned.get(2).getAs("systemstart"), 5L);
-    assertEquals(planned.get(2).getAs("systemend"), systemStart3 - 1);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 299L);
+    assertEquals((long)planned.get(2).getAs("systemstart"), 5L);
+    assertEquals((long)planned.get(2).getAs("systemend"), systemStart3 - 1);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(3).getAs("value"), "world!");
-    assertEquals(planned.get(3).getAs("eventstart"), 200L);
-    assertEquals(planned.get(3).getAs("eventend"), 299L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 299L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(3).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(4).getAs("value"), "hello?");
-    assertEquals(planned.get(4).getAs("eventstart"), 300L);
-    assertEquals(planned.get(4).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(4).getAs("systemstart"), 5L);
-    assertEquals(planned.get(4).getAs("systemend"), systemStart5 - 1);
+    assertEquals((long)planned.get(4).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(4).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(4).getAs("systemstart"), 5L);
+    assertEquals((long)planned.get(4).getAs("systemend"), systemStart5 - 1);
     assertEquals(planned.get(4).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(5).getAs("value"), "world?");
-    assertEquals(planned.get(5).getAs("eventstart"), 300L);
-    assertEquals(planned.get(5).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(5).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(5).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart5 >= preplanSystemTime);
     assertTrue(systemStart5 < preplanSystemTime + 5000);
-    assertEquals(planned.get(5).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(5).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(5).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
 
   }
@@ -1354,43 +1354,43 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart5 = planned.get(5).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 199L);
-    assertEquals(planned.get(0).getAs("systemstart"), 3L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 3L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
     assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
 
     assertEquals(planned.get(2).getAs("value"), "hello!");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 299L);
-    assertEquals(planned.get(2).getAs("systemstart"), 5L);
-    assertEquals(planned.get(2).getAs("systemend"), systemStart3 - 1);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 299L);
+    assertEquals((long)planned.get(2).getAs("systemstart"), 5L);
+    assertEquals((long)planned.get(2).getAs("systemend"), systemStart3 - 1);
 
     assertEquals(planned.get(3).getAs("value"), "world!");
-    assertEquals(planned.get(3).getAs("eventstart"), 200L);
-    assertEquals(planned.get(3).getAs("eventend"), 299L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 299L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
 
     assertEquals(planned.get(4).getAs("value"), "hello?");
-    assertEquals(planned.get(4).getAs("eventstart"), 300L);
-    assertEquals(planned.get(4).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(4).getAs("systemstart"), 5L);
-    assertEquals(planned.get(4).getAs("systemend"), systemStart5 - 1);
+    assertEquals((long)planned.get(4).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(4).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(4).getAs("systemstart"), 5L);
+    assertEquals((long)planned.get(4).getAs("systemend"), systemStart5 - 1);
 
     assertEquals(planned.get(5).getAs("value"), "world?");
-    assertEquals(planned.get(5).getAs("eventstart"), 300L);
-    assertEquals(planned.get(5).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(5).getAs("eventstart"), 300L);
+    assertEquals((long)planned.get(5).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart5 >= preplanSystemTime);
     assertTrue(systemStart5 < preplanSystemTime + 5000);
-    assertEquals(planned.get(5).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(5).getAs("systemend"), 253402214400000L);
 
   }
 
@@ -1457,26 +1457,26 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value"), "hello");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -1502,24 +1502,24 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
 
     assertEquals(planned.get(2).getAs("value"), "hello");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -1543,26 +1543,26 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value"), null);
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -1587,24 +1587,24 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
 
     assertEquals(planned.get(2).getAs("value"), null);
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
   }
 
   @Test
@@ -1652,37 +1652,37 @@ public class TestBitemporalHistoryPlanner {
 
     assertEquals(planned.get(0).getAs("value1"), "hello1:100");
     assertEquals(planned.get(0).getAs("value2"), "hello2:100");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value1"), "hello1:100");
     assertEquals(planned.get(1).getAs("value2"), "hello2:100");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 149L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 149L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value1"), "hello1:150");
     assertEquals(planned.get(2).getAs("value2"), "hello2:100");
-    assertEquals(planned.get(2).getAs("eventstart"), 150L);
-    assertEquals(planned.get(2).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 150L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 199L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(3).getAs("value1"), "hello1:150");
     assertEquals(planned.get(3).getAs("value2"), "hello2:200");
-    assertEquals(planned.get(3).getAs("eventstart"), 200L);
-    assertEquals(planned.get(3).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(3).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -1731,39 +1731,39 @@ public class TestBitemporalHistoryPlanner {
 
     assertEquals(planned.get(0).getAs("value1"), "hello1:50");
     assertEquals(planned.get(0).getAs("value2"), null);
-    assertEquals(planned.get(0).getAs("timestamp"), 50L);
-    assertEquals(planned.get(0).getAs("eventstart"), 50L);
-    assertEquals(planned.get(0).getAs("eventend"), 99L);
+    assertEquals((long)planned.get(0).getAs("timestamp"), 50L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 50L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 99L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value1"), null);
     assertEquals(planned.get(1).getAs("value2"), "hello2:100");
-    assertEquals(planned.get(1).getAs("timestamp"), 100L);
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(1).getAs("systemstart"), 1L);
-    assertEquals(planned.get(1).getAs("systemend"), systemStart2 - 1);
+    assertEquals((long)planned.get(1).getAs("timestamp"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(1).getAs("systemend"), systemStart2 - 1);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value1"), "hello1:50");
     assertEquals(planned.get(2).getAs("value2"), "hello2:100");
-    assertEquals(planned.get(2).getAs("eventstart"), 100L);
-    assertEquals(planned.get(2).getAs("eventend"), 149L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 149L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(3).getAs("value1"), "hello1:50");
     assertEquals(planned.get(3).getAs("value2"), "hello2:150");
-    assertEquals(planned.get(3).getAs("eventstart"), 150L);
-    assertEquals(planned.get(3).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 150L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(3).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -1811,37 +1811,37 @@ public class TestBitemporalHistoryPlanner {
 
     assertEquals(planned.get(0).getAs("value1"), "hello1:100");
     assertEquals(planned.get(0).getAs("value2"), "hello2:100");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value1"), "hello1:100");
     assertEquals(planned.get(1).getAs("value2"), "hello2:100");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 149L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 149L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value1"), "hello1:150");
     assertEquals(planned.get(2).getAs("value2"), null);
-    assertEquals(planned.get(2).getAs("eventstart"), 150L);
-    assertEquals(planned.get(2).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 150L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 199L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(3).getAs("value1"), null);
     assertEquals(planned.get(3).getAs("value2"), "hello2:200");
-    assertEquals(planned.get(3).getAs("eventstart"), 200L);
-    assertEquals(planned.get(3).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(3).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -1889,39 +1889,39 @@ public class TestBitemporalHistoryPlanner {
 
     assertEquals(planned.get(0).getAs("value1"), "hello1:50");
     assertEquals(planned.get(0).getAs("value2"), null);
-    assertEquals(planned.get(0).getAs("timestamp"), 50L);
-    assertEquals(planned.get(0).getAs("eventstart"), 50L);
-    assertEquals(planned.get(0).getAs("eventend"), 99L);
+    assertEquals((long)planned.get(0).getAs("timestamp"), 50L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 50L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 99L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value1"), null);
     assertEquals(planned.get(1).getAs("value2"), "hello2:100");
-    assertEquals(planned.get(1).getAs("timestamp"), 100L);
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(1).getAs("systemstart"), 1L);
-    assertEquals(planned.get(1).getAs("systemend"), systemStart2 - 1);
+    assertEquals((long)planned.get(1).getAs("timestamp"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(1).getAs("systemend"), systemStart2 - 1);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value1"), null);
     assertEquals(planned.get(2).getAs("value2"), "hello2:100");
-    assertEquals(planned.get(2).getAs("eventstart"), 100L);
-    assertEquals(planned.get(2).getAs("eventend"), 149L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 149L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(3).getAs("value1"), null);
     assertEquals(planned.get(3).getAs("value2"), "hello2:150");
-    assertEquals(planned.get(3).getAs("eventstart"), 150L);
-    assertEquals(planned.get(3).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("eventstart"), 150L);
+    assertEquals((long)planned.get(3).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart3 >= preplanSystemTime);
     assertTrue(systemStart3 < preplanSystemTime + 5000);
-    assertEquals(planned.get(3).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(3).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(3).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -1952,19 +1952,19 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart1 = planned.get(1).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 199L);
     assertTrue(systemStart0 >= preplanSystemTime);
     assertTrue(systemStart0 < preplanSystemTime + 5000);
-    assertEquals(planned.get(0).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(0).getAs("currentflag"), currFlagNo);
 
     assertEquals(planned.get(1).getAs("value"), "world");
-    assertEquals(planned.get(1).getAs("eventstart"), 200L);
-    assertEquals(planned.get(1).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), currFlagYes);
   }
   
@@ -1995,26 +1995,26 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
 
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
   }
 
@@ -2044,28 +2044,28 @@ public class TestBitemporalHistoryPlanner {
     Long systemStart2 = planned.get(2).getAs("systemstart");
 
     assertEquals(planned.get(0).getAs("value"), "hello");
-    assertEquals(planned.get(0).getAs("eventstart"), 100L);
-    assertEquals(planned.get(0).getAs("eventend"), 253402214400000L);
-    assertEquals(planned.get(0).getAs("systemstart"), 1L);
-    assertEquals(planned.get(0).getAs("systemend"), systemStart1 - 1);
+    assertEquals((long)planned.get(0).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(0).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(0).getAs("systemstart"), 1L);
+    assertEquals((long)planned.get(0).getAs("systemend"), systemStart1 - 1);
     assertEquals(planned.get(0).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
     assertEquals(planned.get(0).getAs("surrogate"), existingRow.getAs("surrogate"));
 
     assertEquals(planned.get(1).getAs("value"), "hello");
-    assertEquals(planned.get(1).getAs("eventstart"), 100L);
-    assertEquals(planned.get(1).getAs("eventend"), 199L);
+    assertEquals((long)planned.get(1).getAs("eventstart"), 100L);
+    assertEquals((long)planned.get(1).getAs("eventend"), 199L);
     assertTrue(systemStart1 >= preplanSystemTime);
     assertTrue(systemStart1 < preplanSystemTime + 5000);
-    assertEquals(planned.get(1).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(1).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(1).getAs("currentflag"), CURRENT_FLAG_DEFAULT_NO);
     assertNotNull(planned.get(1).getAs("surrogate"));
 
     assertEquals(planned.get(2).getAs("value"), "world");
-    assertEquals(planned.get(2).getAs("eventstart"), 200L);
-    assertEquals(planned.get(2).getAs("eventend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("eventstart"), 200L);
+    assertEquals((long)planned.get(2).getAs("eventend"), 253402214400000L);
     assertTrue(systemStart2 >= preplanSystemTime);
     assertTrue(systemStart2 < preplanSystemTime + 5000);
-    assertEquals(planned.get(2).getAs("systemend"), 253402214400000L);
+    assertEquals((long)planned.get(2).getAs("systemend"), 253402214400000L);
     assertEquals(planned.get(2).getAs("currentflag"), CURRENT_FLAG_DEFAULT_YES);
     assertNotNull(planned.get(2).getAs("surrogate"));
 

@@ -52,7 +52,7 @@ public class TestParseJSONDeriver {
 
     assertEquals(6, row.length());
     assertEquals("hello", row.getAs("f1"));
-    assertEquals(1.2f, row.getAs("f2"));
+    assertEquals(1.2f, (float)row.getAs("f2"));
     assertEquals(true, row.getAs("f3"));
     assertEquals("world", row.getStruct(row.fieldIndex("f4")).getAs("f41"));
     assertEquals("v5", row.getList(row.fieldIndex("f5")).get(0));
@@ -79,7 +79,7 @@ public class TestParseJSONDeriver {
     assertEquals(1, row.length());
     assertEquals(6, struct.length());
     assertEquals("hello", struct.getAs("f1"));
-    assertEquals(1.2f, struct.getAs("f2"));
+    assertEquals(1.2f, (float)struct.getAs("f2"));
     assertEquals(true, struct.getAs("f3"));
     assertEquals("world", struct.getStruct(struct.fieldIndex("f4")).getAs("f41"));
     assertEquals("v5", struct.getList(struct.fieldIndex("f5")).get(0));

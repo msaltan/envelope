@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
+
   <groupId>com.cloudera.labs.envelope</groupId>
   <artifactId>envelope-parent</artifactId>
   <version>0.7.0</version>
   <packaging>pom</packaging>
-  
+
   <inceptionYear>2015</inceptionYear>
   <description>Envelope is an Apache Spark application framework for implementing streaming and batch data pipelines.</description>
   <url>https://github.com/cloudera-labs/envelope</url>
@@ -20,7 +20,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
   <modules>
     <module>core</module>
     <module>lib</module>
@@ -32,11 +32,11 @@
     <module>examples</module>
     <module>build/envelope</module>
   </modules>
-  
+
   <properties>
     <!-- Dependencies -->
     <scala.version>2.11</scala.version>
-    <spark.version>2.1.0</spark.version>
+    <spark.version>2.4.7</spark.version>
     <guava.version>16.0.1</guava.version>
     <typesafe.config.version>1.2.1</typesafe.config.version>
     <slf4j.version>1.7.5</slf4j.version>
@@ -52,7 +52,7 @@
     <maven.surefire.version>2.22.0</maven.surefire.version>
     <maven.dependency.version>2.1</maven.dependency.version>
     <maven.assembly.version>2.6</maven.assembly.version>
-    <maven.shade.version>2.4</maven.shade.version>
+    <maven.shade.version>3.2.4</maven.shade.version>
     <maven.release.version>2.5.3</maven.release.version>
     <maven.jar.version>2.2</maven.jar.version>
     <apache.rat.version>0.12</apache.rat.version>
@@ -202,7 +202,15 @@
                   <!-- exclude invalid signature contained in kitesdk dependencies -->
                   <artifact>org.eclipse.jetty.orbit:javax.servlet</artifact>
                   <excludes>
-                      <exclude>META-INF/ECLIPSEF.RSA</exclude>
+                    <exclude>META-INF/ECLIPSEF.RSA</exclude>
+                  </excludes>
+                </filter>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
                   </excludes>
                 </filter>
               </filters>

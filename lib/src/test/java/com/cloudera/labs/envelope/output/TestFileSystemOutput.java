@@ -22,6 +22,7 @@ import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.hadoop.fs.Path;
+import org.apache.parquet.avro.AvroParquetReader;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.junit.After;
@@ -29,7 +30,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-import parquet.avro.AvroParquetReader;
+//import parquet.avro.AvroParquetReader;
 import scala.Tuple2;
 
 import java.io.BufferedReader;
